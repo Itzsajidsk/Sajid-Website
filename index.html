@@ -440,5 +440,24 @@
 
 <script src="./assets/js/script.js"></script>
 
+
+    <form id="contact-form">
+  <input name="email" type="email" placeholder="Email" required>
+  <button type="submit">Send</button>
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzJgToySoN0HFR5NzpgJmkpq-B5xnWsVf-VfDJbe0l2XwHfp1YtLgXGn78luGKGSj_RDA/exec'
+  const form = document.forms['contact-form']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+      form.reset()
+  })
+</script>
+
 </body>
 </html>
