@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+    // Remove the hash from the URL when the page loads
+    if (window.location.hash) {
+        history.replaceState(null, null, ' '); // This removes the hash from the URL
+    }
+
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('nav-toggle');
@@ -38,20 +43,20 @@ $(document).ready(function () {
     });
 
     // <!-- emailjs to mail contact form data -->
-    // $("#contact-form").submit(function (event) {
-    //     emailjs.init("user_iLwvqcOmTVd55k20p");
+    $("#contact-form").submit(function (event) {
+        emailjs.init("user_iLwvqcOmTVd55k20p");
 
-    //     emailjs.sendForm('contact_service', 'template_contact', '#contact-form')
-    //         .then(function (response) {
-    //             console.log('SUCCESS!', response.status, response.text);
-    //             document.getElementById("contact-form").reset();
-    //             alert("Form Submitted Successfully");
-    //         }, function (error) {
-    //             console.log('FAILED...', error);
-    //             alert("Form Submission Failed! Try Again");
-    //         });
-    //     event.preventDefault();
-    // });
+        emailjs.sendForm('contact_service', 'template_contact', '#contact-form')
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                document.getElementById("contact-form").reset();
+                alert("Form Submitted Successfully");
+            }, function (error) {
+                console.log('FAILED...', error);
+                alert("Form Submission Failed! Try Again");
+            });
+        event.preventDefault();
+    });
     // <!-- emailjs to mail contact form data -->
 
 });
@@ -59,7 +64,7 @@ $(document).ready(function () {
 document.addEventListener('visibilitychange',
     function () {
         if (document.visibilityState === "visible") {
-            document.title = "Portfolio | KIRAN KUMAR U";
+            document.title = "Portfolio | SAJID";
             $("#favicon").attr("href", "assets/images/favicon.png");
         }
         else {
@@ -189,9 +194,6 @@ document.onkeydown = function (e) {
         return false;
     }
 }
-
-
-
 
 /* ===== SCROLL REVEAL ANIMATION ===== */
 const srtop = ScrollReveal({
